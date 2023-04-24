@@ -1,0 +1,18 @@
+server:
+  port: 8081
+#  应用名称 nacos中的服务名称
+spring:
+  application:
+    name: order-service
+  cloud:
+#    nacos 相关信息
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
+store-service:
+  ribbon:
+     NFLoadBalancerRuleClassName: com.trojan.ribbon.rule.CustomizeRule
+

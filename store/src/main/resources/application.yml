@@ -1,0 +1,14 @@
+server:
+  port: 8082
+#  应用名称 nacos中的服务名称
+spring:
+  application:
+    name: store-service
+  cloud:
+    #    nacos 相关信息
+    nacos:
+      server-addr: localhost:8848
+      discovery:
+        username: nacos
+        password: nacos
+        namespace: public
