@@ -1,9 +1,4 @@
-package com.trojan.config;/**
- * @Description
- * @Author Trojan
- * @Date 2023/4/24
- * @Version 1.0
- */
+package com.trojan.config;
 
 import com.alibaba.cloud.nacos.ribbon.NacosRule;
 import com.netflix.loadbalancer.IRule;

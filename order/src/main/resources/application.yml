@@ -5,7 +5,7 @@ spring:
   application:
     name: order-service
   cloud:
-#    nacos 相关信息
+    #    nacos 相关信息
     nacos:
       server-addr: localhost:8848
       discovery:
@@ -17,4 +17,7 @@ spring:
 #        enabled: false
 store-service:
   ribbon:
-     NFLoadBalancerRuleClassName: com.trojan.ribbon.rule.CustomizeRule
+    NFLoadBalancerRuleClassName: com.trojan.ribbon.rule.CustomizeRule
+logging:
+  level:
+    com.trojan.order.feign: debug

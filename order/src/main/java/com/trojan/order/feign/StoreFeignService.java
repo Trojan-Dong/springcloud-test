@@ -1,9 +1,4 @@
-package com.trojan.order.feign;/**
- * @Description
- * @Author Trojan
- * @Date 2023/4/25
- * @Version 1.0
- */
+package com.trojan.order.feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
