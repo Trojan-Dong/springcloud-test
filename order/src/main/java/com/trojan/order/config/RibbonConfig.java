@@ -1,9 +1,8 @@
-package com.trojan.config;
+package com.trojan.order.config;
 
 import com.alibaba.cloud.nacos.ribbon.NacosRule;
 import com.netflix.loadbalancer.IRule;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @ClassName RibbonConfig
@@ -12,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2023/4/24
  * @Version 1.0
  */
-@Configuration
+//@Configuration
 public class RibbonConfig {
     /* *
      * @desc 全局配置负载均衡策略

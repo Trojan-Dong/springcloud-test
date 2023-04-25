@@ -15,9 +15,14 @@ spring:
 #    loadbalancer:
 #      ribbon:
 #        enabled: false
+
+#
+  #    com.trojan.order.controller: debug
+
 store-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.trojan.ribbon.rule.CustomizeRule
 logging:
   level:
     com.trojan.order.feign: debug
+#    com.trojan.order.config: debug
