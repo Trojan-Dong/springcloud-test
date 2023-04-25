@@ -5,6 +5,7 @@ package com.trojan.order.controller;/**
  * @Version 1.0
  */
 
+import com.trojan.order.feign.StoreFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +23,17 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    //    @Autowired
+//    RestTemplate restTemplate;
     @Autowired
-    RestTemplate restTemplate;
+    StoreFeignService storeFeignService;
 
     @RequestMapping("/add")
     public String add() {
         System.out.println("add order ");
-        String retMsg = restTemplate.getForObject("http://store-service/store/add", String.class);
+//        String retMsg = restTemplate.getForObject("http://store-service/store/add", String.class);
+        String retMsg = storeFeignService.add();
+
         return "add order " + retMsg;
     }
 }
