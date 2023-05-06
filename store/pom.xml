@@ -21,11 +21,26 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-core</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-core</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-annotation-aspectj</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.csp</groupId>-->
+<!--            <artifactId>sentinel-transport-simple-http</artifactId>-->
+<!--            <version>1.8.0</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
