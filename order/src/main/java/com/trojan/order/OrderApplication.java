@@ -28,12 +28,12 @@ import java.util.concurrent.TimeUnit;
 public class OrderApplication {
     public static void main(String[] args) throws InterruptedException {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(OrderApplication.class, args);
-        while(true){
-            System.out.println(applicationContext.getEnvironment().getProperty("user.name"));
-            System.out.println(applicationContext.getEnvironment().getProperty("user.space"));
-            System.out.println(applicationContext.getEnvironment().getProperty("user.config"));
-            TimeUnit.SECONDS.sleep(3);
-        }
+//        while(true){
+//            System.out.println(applicationContext.getEnvironment().getProperty("user.name"));
+//            System.out.println(applicationContext.getEnvironment().getProperty("user.space"));
+//            System.out.println(applicationContext.getEnvironment().getProperty("user.config"));
+//            TimeUnit.SECONDS.sleep(3);
+//        }
 
     }
 

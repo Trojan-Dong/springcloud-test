@@ -15,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @ClassName CustomizeRule
- * @Description TODO
+ * @Description 自定义负载均衡规则
  * @Author Trojan
  * @Date 2023/4/25
  * @Version 1.0

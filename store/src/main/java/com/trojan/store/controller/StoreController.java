@@ -45,7 +45,7 @@ public class StoreController {
     String port;
 
     @RequestMapping("/add")
-    @SentinelResource(value = RESOURCE_NAME,  blockHandler = "blockHandler")
+//    @SentinelResource(value = RESOURCE_NAME,  blockHandler = "blockHandler")
     public String add() {
         System.out.println("add store");
 //        throw new RuntimeException("熔断降级");
@@ -70,6 +70,13 @@ public class StoreController {
         return "add store" + port;
     }
 
+
+    @RequestMapping("/testFallback")
+    public String testFallback() {
+
+        int a = 1 / 0;
+        return "testFallback" + port;
+    }
 
     public String blockHandler(BlockException e) {
         e.printStackTrace();
@@ -98,30 +105,30 @@ public class StoreController {
         FlowRuleManager.loadRules(rules);
     }*/
 
-    @PostConstruct
-    private static void initDeGradeRule() {
-
-        System.out.println(" init DeGradeRule");
-        List<DegradeRule> rules = new ArrayList<>();
-
-        DegradeRule degradeRule = new DegradeRule();
-
-        //声明流控的资源对象
-        degradeRule.setResource(RESOURCE_NAME);
-        //设置QPS的流控规则
-        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT);
-        //设置受保护的资源阈值
-        degradeRule.setCount(2);
-
-        degradeRule.setMinRequestAmount(2);
-
-        degradeRule.setStatIntervalMs(10 * 1000);
-
-        degradeRule.setTimeWindow(10);
-
-        rules.add(degradeRule);
-
-        //加载配置好的流量规则
-        DegradeRuleManager.loadRules(rules);
-    }
+//    @PostConstruct
+//    private static void initDeGradeRule() {
+//
+//        System.out.println(" init DeGradeRule");
+//        List<DegradeRule> rules = new ArrayList<>();
+//
+//        DegradeRule degradeRule = new DegradeRule();
+//
+//        //声明流控的资源对象
+//        degradeRule.setResource(RESOURCE_NAME);
+//        //设置QPS的流控规则
+//        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT);
+//        //设置受保护的资源阈值
+//        degradeRule.setCount(2);
+//
+//        degradeRule.setMinRequestAmount(2);
+//
+//        degradeRule.setStatIntervalMs(10 * 1000);
+//
+//        degradeRule.setTimeWindow(10);
+//
+//        rules.add(degradeRule);
+//
+//        //加载配置好的流量规则
+//        DegradeRuleManager.loadRules(rules);
+//    }
 }

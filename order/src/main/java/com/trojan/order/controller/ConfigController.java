@@ -1,5 +1,7 @@
 package com.trojan.order.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +21,14 @@ public class ConfigController {
 
     @Value("${user.config}")
     String config;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/getConfig")
-    public String getConfig() {
-        return config;
+    public String getConfig() throws InterruptedException {
+        Thread thread = Thread.currentThread();
+        logger.info("currentThreadId:{}", thread.getId());
+        Thread.sleep(5 * 1000);
+
+        return config + thread.getId();
     }
 }

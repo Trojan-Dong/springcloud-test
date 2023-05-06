@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @ClassName FeignConfig
- * @Description TODO
+ * @Description 通过config自定义日志级别
  * @Author Trojan
  * @Date 2023/4/25
  * @Version 1.0

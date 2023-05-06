@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date 2023/4/25
  * @Version 1.0
  */
-@FeignClient(name = "store-service", path = "/store")
+@FeignClient(name = "store-service", path = "/store", fallback = StoreFeignFallbackService.class)
 public interface StoreFeignService {
     @RequestMapping("/add")
     public String add();
+
+    @RequestMapping(value = "/testFallback")
+    public String testFallback();
 
 }
