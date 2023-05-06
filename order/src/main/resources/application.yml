@@ -1,18 +1,19 @@
 server:
   port: 8081
 #  应用名称 nacos中的服务名称
-spring:
-  application:
-    name: order-service
-  cloud:
-    #    nacos 相关信息
-    nacos:
-      server-addr: localhost:8848
-      discovery:
-        username: nacos
-        password: nacos
-        namespace: public
-#    loadbalancer:
+#spring:
+##  application:
+##    name: order-service
+#  cloud:
+#    #    nacos 相关信息
+#    nacos:
+#      server-addr: 43.143.19.102:8849
+#      discovery:
+#        username: nacos
+#        password: nacos
+#        namespace: dev
+
+  #    loadbalancer:
 #      ribbon:
 #        enabled: false
 
@@ -25,4 +26,10 @@ store-service:
 logging:
   level:
     com.trojan.order.feign: debug
-#    com.trojan.order.config: debug
+feign:
+  client:
+    config:
+      product-service:
+        loggerLevel: FULL
+        connecTimeout: 5000 #请求服务的时间
+        readTimeout: 3000 #服务端业务处理返回的时间

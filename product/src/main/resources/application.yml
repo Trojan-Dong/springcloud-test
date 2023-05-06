@@ -7,7 +7,7 @@ spring:
   cloud:
     #    nacos 相关信息
     nacos:
-      server-addr: localhost:8848
+      server-addr: 43.143.19.102:8849
       discovery:
         username: nacos
         password: nacos

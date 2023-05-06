@@ -8,6 +8,10 @@ package com.trojan.order;/**
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ClassName OrderApplication
@@ -22,8 +26,15 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 //})
 @EnableFeignClients
 public class OrderApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class, args);
+    public static void main(String[] args) throws InterruptedException {
+        ConfigurableApplicationContext applicationContext = SpringApplication.run(OrderApplication.class, args);
+        while(true){
+            System.out.println(applicationContext.getEnvironment().getProperty("user.name"));
+            System.out.println(applicationContext.getEnvironment().getProperty("user.space"));
+            System.out.println(applicationContext.getEnvironment().getProperty("user.config"));
+            TimeUnit.SECONDS.sleep(3);
+        }
+
     }
 
 //    @Bean
