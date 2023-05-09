@@ -20,4 +20,9 @@ public class StoreFeignFallbackService implements StoreFeignService {
     public String testFallback() {
         return "fallback 服务降级";
     }
+
+    @Override
+    public String reduct(Integer productId) {
+        return null;
+    }
 }

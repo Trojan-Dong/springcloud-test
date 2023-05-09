@@ -5,26 +5,15 @@ package com.trojan.store.controller;/**
  * @Version 1.0
  */
 
-import com.alibaba.csp.sentinel.Entry;
-import com.alibaba.csp.sentinel.EntryType;
-import com.alibaba.csp.sentinel.SphU;
-import com.alibaba.csp.sentinel.Tracer;
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.alibaba.csp.sentinel.slots.block.RuleConstant;
-import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
-import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
-import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
-import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
+import com.trojan.store.service.StoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @ClassName StoreController
@@ -81,6 +70,16 @@ public class StoreController {
     public String blockHandler(BlockException e) {
         e.printStackTrace();
         return "熔断降级";
+    }
+
+    @Autowired
+    StoreService storeService;
+
+    @RequestMapping("/reduct")
+    public String reduct(@RequestParam(value = "productId") Integer productId) {
+        logger.info("productid:{}", productId);
+        storeService.reduct(productId);
+        return "扣减库存";
     }
 
 

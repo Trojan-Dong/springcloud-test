@@ -4,43 +4,96 @@ server:
 spring:
   application:
     name: order.service
+
   cloud:
+    #        nacos 相关信息
+    nacos:
+      discovery:
+        server-addr: 43.143.19.102:8849
+        username: nacos
+        password: nacos
+        namespace: public
+
     sentinel:
       transport:
-#        使用sentinel控制面板  sentinel的地址及端口
+        #        使用sentinel控制面板  sentinel的地址及端口
         dashboard: localhost:8050
-
-    #    nacos 相关信息
-#    nacos:
-#      server-addr: 43.143.19.102:8849
-#      discovery:
-#        username: nacos
-#        password: nacos
-#        namespace: dev
-
+      datasource:
+        flow-rule:
+          nacos:
+            serverAddr: 43.143.19.102:8849
+            username: nacos
+            password: nacos
+            dataId: order.service.sentinelconfig
+            ruleType: flow
+            namespace: 7d0da8c8-b8bf-4034-801c-6f8f1c6b6ee5
+            dataType: json
+    alibaba:
+      seata:
+        # tips:与file.conf 中记录到nacos的值相同
+        # file:  service.vgroupMapping.default_tx_group=default
+        # nacos: dataId=service.vgroupMapping.default_tx_group value:defalut
+        tx-service-group: default_tx_group
   #    loadbalancer:
-#      ribbon:
-#        enabled: false
-
-#
+  #      ribbon:
+  #        enabled: false
+  #
   #    com.trojan.order.controller: debug
+  # 数据源
+  datasource:
+    username: root
+    password: 1476154535@qwer
+    url: jdbc:mysql://sh-cynosdbmysql-grp-dqktvhju.sql.tencentcdb.com:26578/seata_order?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #初始化时运行sql脚本
+  #    schema: classpath:sql/schema.sql
+  #    initialization-mode: never
+
 #定义ribbon负载均衡规则
 store-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.trojan.ribbon.rule.CustomizeRule
 
+#设置mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  typeAliasesPackage: com.trojan.order.pojo
+#  configuration:
+#    mapUnderscoreToCamelCase: true
+
 #    全局日志定义
 logging:
   level:
     com.trojan.order.feign: info
+
+#    feign
 feign:
   client:
     config:
       product-service:
-#        定义feign的日志输出模式
+        #        定义feign的日志输出模式
         loggerLevel: BASIC
         connecTimeout: 5000 #请求服务的时间
         readTimeout: 3000 #服务端业务处理返回的时间
   sentinel:
-#    默认值为false
-    enabled: true
+    enabled: on
+seata:
+  registry:
+    # 配置seata的注册中心， 告诉seata client 怎么去访问seata server(TC)
+    type: nacos
+    nacos:
+      server-addr: 43.143.19.102:8849  # seata server 所在的nacos服务地址
+      application: seata-server    # seata server 的服务名seata-server ，如果没有修改可以不配
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP          # seata server 所在的组，默认就是SEATA_GROUP，没有改也可以不配
+  config:
+    type: nacos
+    nacos:
+      server-addr: 43.143.19.102:8849
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+

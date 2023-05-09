@@ -6,12 +6,12 @@ spring:
       server-addr: 43.143.19.102:8849
       username: nacos
       password: nacos
-      config:
-        file-extension: yaml
-        namespace: 7d0da8c8-b8bf-4034-801c-6f8f1c6b6ee5
-        shared-configs:
-          - data-id: com.trojan.order.yaml
-            refresh: true
-#  profiles:
-#    profile配置文件的优先级大于默认配置文件的优先级 且优先级高的会覆盖优先级低的配置文件，并且行成互补
-#    active: dev
+#      config:
+#        file-extension: yaml
+##        namespace: 7d0da8c8-b8bf-4034-801c-6f8f1c6b6ee5
+##        shared-configs:
+##          - data-id: com.trojan.order.yaml
+##            refresh: true
+##  profiles:
+##    profile配置文件的优先级大于默认配置文件的优先级 且优先级高的会覆盖优先级低的配置文件，并且行成互补
+##    active: dev

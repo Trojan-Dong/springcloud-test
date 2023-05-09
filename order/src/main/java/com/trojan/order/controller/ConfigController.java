@@ -19,16 +19,17 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope //使用@value进行值的注入时，需要使用此注解动态获取nacos远程配置的值
 public class ConfigController {
 
-    @Value("${user.config}")
-    String config;
+//    @Value("${user.config}")
+//    String config;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("/getConfig")
     public String getConfig() throws InterruptedException {
         Thread thread = Thread.currentThread();
         logger.info("currentThreadId:{}", thread.getId());
-        Thread.sleep(5 * 1000);
 
-        return config + thread.getId();
+//        return config + thread.getId();
+        return "thread:"+thread.getId();
     }
 }

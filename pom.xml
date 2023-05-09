@@ -7,6 +7,7 @@
         <module>order</module>
         <module>store</module>
         <module>product</module>
+        <module>api-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -36,6 +37,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
 
     </dependencies>
 

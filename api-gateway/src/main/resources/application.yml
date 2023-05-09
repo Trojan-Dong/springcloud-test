@@ -1,0 +1,40 @@
+server:
+  port: 8085
+#  应用名称 nacos中的服务名称
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 43.143.19.102:8849
+        username: nacos
+        password: nacos
+        namespace: public
+
+  sentinel:
+    transport:
+      #        使用sentinel控制面板  sentinel的地址及端口
+      dashboard: localhost:8050
+    eager: true
+    gateway:
+      #      discovery:
+      #        locator:
+      #          enabled: true
+      routes:
+        - id: order_route # 路由的唯一标识
+          uri: lb://order.service   #需要转发的地址 使用固定地址时需要添加前缀 如http://localhost:8081
+          #断言规则 匹配指定的路径进行路由
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - StripPrefix=1 # 转发之前省略第一层路径
+
+        - id: store_route # 路由的唯一标识
+          uri: lb://store-service   #需要转发的地址
+          #断言规则 匹配指定的路径进行路由
+          predicates:
+            - Path=/store-service/**
+          filters:
+            - StripPrefix=1 # 转发之前省略第一层路径
+

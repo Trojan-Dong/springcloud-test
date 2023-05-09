@@ -5,6 +5,7 @@ package com.trojan.order;/**
  * @Version 1.0
  */
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -25,6 +26,7 @@ import java.util.concurrent.TimeUnit;
 //        @RibbonClient(name = "store-service", configuration = RibbonConfig.class)
 //})
 @EnableFeignClients
+@MapperScan("com.trojan.order.mapper")
 public class OrderApplication {
     public static void main(String[] args) throws InterruptedException {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(OrderApplication.class, args);
