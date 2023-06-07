@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2023/4/25
  * @Version 1.0
  * <p>
- * question: 不在order包下时日志不生效 与controller包在同一目录下
+ * question: 不在order包下时日志不生效 与controller包在同一目录下 basepackage
  */
 @Configuration
 public class FeignConfig {

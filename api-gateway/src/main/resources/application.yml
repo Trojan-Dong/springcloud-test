@@ -12,15 +12,9 @@ spring:
         password: nacos
         namespace: public
 
-  sentinel:
-    transport:
-      #        使用sentinel控制面板  sentinel的地址及端口
-      dashboard: localhost:8050
-    eager: true
+
+
     gateway:
-      #      discovery:
-      #        locator:
-      #          enabled: true
       routes:
         - id: order_route # 路由的唯一标识
           uri: lb://order.service   #需要转发的地址 使用固定地址时需要添加前缀 如http://localhost:8081
@@ -37,4 +31,12 @@ spring:
             - Path=/store-service/**
           filters:
             - StripPrefix=1 # 转发之前省略第一层路径
+    #      discovery:
+    #        locator:
+    #          enabled: true
 
+    sentinel:
+      #        使用sentinel控制面板  sentinel的地址及端口
+      transport:
+        dashboard: localhost:8050
+      eager: on

@@ -3,6 +3,9 @@ package com.trojan.order.service.impl;
 import com.trojan.order.mapper.OrderMapper;
 import com.trojan.order.pojo.Order;
 import com.trojan.order.service.OrderService;
+import org.apache.skywalking.apm.toolkit.trace.Tag;
+import org.apache.skywalking.apm.toolkit.trace.Tags;
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +29,12 @@ public class OrderServiceImpl implements OrderService {
      *
      * @return
      */
-    @Transactional
     @Override
+    @Trace
+    @Tags({
+            @Tag(key = "create", value = "returnedObj"),
+            @Tag(key = "param", value = "arg[0]")
+    })
     public Order create(Order order) {
         // 插入能否成功？
         orderMapper.insert(order);
@@ -38,7 +45,6 @@ public class OrderServiceImpl implements OrderService {
         paramMap.add("productId", order.getProductId());
 
 //        String msg = restTemplate.postForObject("http://localhost:8071/stock/reduct", paramMap, String.class);
-
 
 
         return order;

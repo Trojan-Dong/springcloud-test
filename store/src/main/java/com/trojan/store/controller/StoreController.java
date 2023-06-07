@@ -86,7 +86,7 @@ public class StoreController {
    /* @PostConstruct
     private static void initFlowRule() {
 
-        System.out.println(" init FlowRule");
+        logger.info(" init FlowRule");
         List<FlowRule> rules = new ArrayList<>();
 
         FlowRule flowRule = new FlowRule();
@@ -107,14 +107,14 @@ public class StoreController {
 //    @PostConstruct
 //    private static void initDeGradeRule() {
 //
-//        System.out.println(" init DeGradeRule");
+//        logger.info(" init DeGradeRule");
 //        List<DegradeRule> rules = new ArrayList<>();
 //
 //        DegradeRule degradeRule = new DegradeRule();
 //
-//        //声明流控的资源对象
+//        //声明降级的资源对象
 //        degradeRule.setResource(RESOURCE_NAME);
-//        //设置QPS的流控规则
+//        //设置QPS的降级规则
 //        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT);
 //        //设置受保护的资源阈值
 //        degradeRule.setCount(2);
